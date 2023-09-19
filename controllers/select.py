@@ -1,4 +1,4 @@
-from tkinter import filedialog
+from tkinter import filedialog, Toplevel, Label, Button
 from PIL import ImageTk, Image
 
 from models.main import Model
@@ -24,5 +24,21 @@ class SelectController:
         self.frame.image.config(image=img)
 
     def changeToResultView(self):
+        try:
+            # ganti image di frame result
+            self.view.frames["result"].selected_img.config(image=img)
+        except NameError:
+            self.img_is_not_selected_popup()
+
         self.view.switch("result")
+    
+    def img_is_not_selected_popup(self):
+        popup = Toplevel(self.frame)
+        popup.title("Alert")
+        popup.geometry("200x100")
+        alert = Label(popup, text="Select an image first")
+        ok_btn = Button(popup, text="Ok", command=popup.destroy)
+        alert.pack()
+        ok_btn.pack()
+        popup.mainloop()
 
