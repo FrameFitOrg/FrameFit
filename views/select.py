@@ -1,4 +1,5 @@
-from tkinter import Frame, Label, Button
+import tkinter as tk
+from tkinter import Frame, Label, Button, Canvas
 from PIL import Image, ImageTk
 
 class SelectView(Frame):
@@ -12,11 +13,15 @@ class SelectView(Frame):
 
         self.initial_img = Image.open("./images/upload-img.png")
         self.initial_photo = ImageTk.PhotoImage(self.initial_img)
-        self.image = Label(self, image=self.initial_photo)
-        self.image.grid(row=1, column=0, padx=10, pady=10)
+        self.canvas_image = Canvas(self, width=300, height=200)
+        self.image_container = self.canvas_image.create_image(0, 0, image=self.initial_photo, anchor=tk.NW)
+        self.canvas_image.grid(row=1, column=0, padx=10, pady=10)
 
         self.upload_btn = Button(self, text="upload")
         self.upload_btn.grid(row=2, column=0, padx=10, pady=10)
 
+        self.photo_btn = Button(self, text="photo")
+        self.photo_btn.grid(row=3, column=0, padx=10, pady=10)
+
         self.generate_btn = Button(self, text="Generate")
-        self.generate_btn.grid(row=3, column=0, padx=10, pady=10)
+        self.generate_btn.grid(row=4, column=0, padx=10, pady=10)
