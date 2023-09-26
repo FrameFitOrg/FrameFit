@@ -1,9 +1,9 @@
-import sqlite3
+#import sqlite3
 
 class Wajah():
     def __init__(self):
-        self.conn = sqlite3.connect('framefit.db')
-        self.cursor = self.conn.cursor()
+        #self.conn = sqlite3.connect('framefit.db')
+        #self.cursor = self.conn.cursor()
 
         self.bentuk_wajah = 0
         self.mata = 0
