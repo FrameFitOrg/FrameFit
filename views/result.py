@@ -1,4 +1,5 @@
-from tkinter import Frame, Label, Button
+import tkinter as tk
+from tkinter import Frame, Label, Button, Canvas
 from PIL import Image, ImageTk
 
 class ResultView(Frame):
@@ -28,5 +29,18 @@ class ResultView(Frame):
         self.mouth_shape_txt = Label(self, text="Bibir: thin")
         self.mouth_shape_txt.grid(row=5, column=1)
 
+        self.rec_txt = Label(self, text="Rekomendasi: ")
+        self.rec_txt.grid(row=7, column=0, padx=10, pady=10)
+
+        self.initial_img = Image.open("./images/example.jpg")
+        self.initial_img = self.initial_img.resize((250, 80), Image.LANCZOS)
+        self.initial_photo = ImageTk.PhotoImage(self.initial_img)
+        self.canvas_image = Canvas(self, width=250, height=80)
+        self.image_container = self.canvas_image.create_image(0, 0, image=self.initial_photo, anchor=tk.NW)
+        self.canvas_image.grid(row=8, column=0, padx=10, pady=10)
+
+        self.frame_shape_txt = Label(self, text="Frame: kotak")
+        self.frame_shape_txt.grid(row=9, column=0, padx=10, pady=3)
+
         self.back_btn = Button(self, text="Back")
-        self.back_btn.grid(row=7, column=0, padx=10, pady=10)
+        self.back_btn.grid(row=10, column=0, padx=10, pady=10)
