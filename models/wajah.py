@@ -7,13 +7,13 @@ class Wajah():
         self.mulut = 0
 
     def ambilSemuaGambar(self):
-        # isi sesuai dengan database api
+        # isi sesuai dengan endpoint di database api
         pass
 
     def kirimGambar(self, bentuk_wajah, mata, hidung, pipi, mulut):
-        # isi sesuai dengan database api
+        # isi sesuai dengan endpoint di database api
         pass
 
     def ambilBentukWajah(self):
-        # isi sesuai dengan ML api
+        # isi sesuai dengan endpoint di ML api
         pass
