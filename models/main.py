@@ -3,5 +3,5 @@ from models.kacamata import Kacamata
 
 class Model:
     def __init__(self):
-        wajah_model = Wajah()
-        Kacamata_model = Kacamata()
+        self.wajah_model = Wajah()
+        self.Kacamata_model = Kacamata()

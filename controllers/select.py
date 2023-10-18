@@ -20,6 +20,7 @@ class SelectController:
         self.frame.generate_btn.config(command=self.changeToResultView)
     
     def selectImage(self):
+        global filename
         filename = filedialog.askopenfilename(initialdir="/images", title="Select Image", filetypes=(("png images", "*.png"), ("jpg images", "*.jpg")))
         img = Image.open(filename)
         self.change_image(img)
@@ -64,8 +65,14 @@ class SelectController:
 
     def changeToResultView(self):
         try:
-            # ganti image di frame result
+            # ganti image di frame result dan kirim gambar ke ML server
             self.view.frames["result"].selected_img.config(image=img)
+
+            # URL endpoint untuk mengirim gambar
+            url = 'https://vlm2jkrd-5000.asse.devtunnels.ms/predict'  # Ganti dengan URL API Anda
+
+            # Mengirim gambar ke server
+            self.model.wajah_model.send_image(url, filename)
         except NameError:
             self.img_is_not_selected_popup()
 
